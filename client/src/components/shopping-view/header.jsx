@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { fetchCartItems } from "@/store/shop/cart-slice";
 import { Label } from "../ui/label";
 
-function MenuItems() {
+function MenuItems(openCartSheet, setOpenCartSheet) {
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -67,7 +67,7 @@ function HeaderRightContent() {
             <Sheet open={openCartSheet} onOpenChange={()=>setOpenCartSheet(false)}>
                 <Button className="relative" onClick={()=>setOpenCartSheet(true)} variant="outline" size='icon'>
                     <ShoppingCart className="w-6 h-6" />
-                    <span className="absolute top-[-5px] right-[2px] fomt-bold text-sm">{cartItems?.items?.length || 0}</span>
+                    <span className="absolute top-[-5px] right-[2px] font-bold text-sm">{cartItems?.items?.length || 0}</span>
                     <span className="sr-only">User cart</span>
                 </Button>
                 <UserCartWrapper setOpenCartSheet={setOpenCartSheet} cartItems={cartItems && cartItems.items && cartItems.items.length > 0 ? cartItems.items : []} />
@@ -84,7 +84,7 @@ function HeaderRightContent() {
                     <DropdownMenuItem onClick={()=>navigate("/shop/account")}>
                     <User className="mr-2 h-4 w-4" />
                     Account
-                    </DropdownMenuItem>
+                    </DropdownMenuItem >
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={handleLogout}>
                     <LogOut className="mr-2 h-4 w-4" />

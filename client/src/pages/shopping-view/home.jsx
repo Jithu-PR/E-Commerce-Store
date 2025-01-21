@@ -90,6 +90,8 @@ function ShoppingHome() {
     },[productDetails]);
 
     useEffect(() => {
+        console.log(featureImageList,"img list");
+        
         dispatch(getFeatureImages());
     }, [dispatch]);
 

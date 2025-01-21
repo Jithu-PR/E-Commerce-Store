@@ -1,5 +1,5 @@
 import Address from "@/components/shopping-view/address";
-import img from "../../assets/Checkout1.jpeg"
+import img from "../../assets/checkout1.jpeg"
 import { useDispatch, useSelector } from "react-redux";
 import UserCartItemsContend from "@/components/shopping-view/cart-items-content";
 import { Button } from "@/components/ui/button";

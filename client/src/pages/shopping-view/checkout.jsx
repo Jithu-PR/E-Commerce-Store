@@ -16,9 +16,7 @@ function ShoppingCheckout() {
     const [isPaymentStart, setIsPaymentStart] = useState(false);
     const dispatch = useDispatch();
     const {toast} = useToast();
-
-    console.log(currentSelectedAddress,"address");
-    
+   
 
     const totalCartAmount = cartItems && cartItems.items && cartItems.items.length > 0 ?
     cartItems.items.reduce((sum, currentItem)=> 

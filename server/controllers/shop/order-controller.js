@@ -176,4 +176,32 @@ const getOrderDetails = async(req, res)=> {
     }
 };
 
-module.exports = {createOrder, capturePayment, getAllOrdersByUser, getOrderDetails};
+const deleteOrder = async(req, res)=> {
+    try{
+        const {id} = req.params;
+
+        const order = await Order.findOneAndDelete({_id: id});
+        if(!order) {
+            res.status(404).json({
+                success : false,
+                message : "Order not found"
+            })
+        }
+
+        res.status(200).json({
+            success : true,
+            message : "Order deleted successfully"
+        });
+
+
+    }catch(e){
+        console.log(e);
+        res.status(500).json({
+            success : false,
+            message : "error"
+        })
+        
+    }
+} 
+
+module.exports = {createOrder, capturePayment, getAllOrdersByUser, getOrderDetails, deleteOrder};

@@ -31,6 +31,11 @@ export const getOrderDetails = createAsyncThunk("/order/getOrderDetails", async(
     return response.data;
 });
 
+export const deleteOrder = createAsyncThunk('/order/deleteOrder', async(id)=> {
+    const response = await axios.delete(`${import.meta.env.VITE_API_URL}/api/shop/order/delete/${id}`);
+    return response.data
+});
+
 
 const shopOrdersSlice = createSlice({
     name : "shoppingOrderSlice",

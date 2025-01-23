@@ -16,18 +16,33 @@ function PaypalReturnPage() {
     const payerId = params.get("PayerID");
 
     useEffect(() => {
-
-        if(paymentId && payerId) {
+        if (paymentId && payerId) {
             const orderId = JSON.parse(sessionStorage.getItem("currentOrderId"));
-            dispatch(capturePayment({paymentId, payerId, orderId}
-            )).then((data)=> {
-            if(data?.payload?.success) {
-                sessionStorage.removeItem("currentOrderId");
-                window.location.href = "/shop/payment-success";
-            }});
+    
+            // Attempt to capture the payment
+            dispatch(capturePayment({ paymentId, payerId, orderId }))
+                .then((data) => {
+                    if (data?.payload?.success) {
+                        // If payment is successful
+                        sessionStorage.removeItem("currentOrderId");
+                        window.location.href = "/shop/payment-success";
+                    } else {
+                        // If payment failed or something else went wrong
+                        console.error("Payment capture failed:", data?.payload?.error);
+                        window.location.href = "/shop/paypal-cancel";
+                    }
+                })
+                .catch((error) => {
+                    // Handle unexpected errors during payment capture
+                    console.error("Payment capture error:", error);
+                    window.location.href = "/shop/paypal-cancel";
+                });
+        } else {
+            // If there are no paymentId or payerId (maybe canceled)
+            window.location.href = "/shop/paypal-cancel"; // Redirect to a payment canceled page
         }
-
-    }, [paymentId, payerId, dispatch])
+    }, [paymentId, payerId, dispatch]);
+    
     
 
   return (

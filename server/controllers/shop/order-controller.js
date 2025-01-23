@@ -43,7 +43,7 @@ const createOrder = async(req, res)=> {
                 console.log(error);
                 return res.status(500).json({
                     success : false,
-                    message : "Error while cresating paypal payment"
+                    message : "Error while creating paypal payment"
                 })     
             } else {
                 const newlyCreatedOrder = new Order({

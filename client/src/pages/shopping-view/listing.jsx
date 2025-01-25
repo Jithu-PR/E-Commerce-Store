@@ -147,7 +147,7 @@ function ShoppingListing() {
                                 <span>Sort by</span>
                             </Button>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end" className="w-{[200px]}">
+                        <DropdownMenuContent align="end" className="w-[200px]">
                             <DropdownMenuRadioGroup value={sort} onValueChange={handleSort}>
                                 {
                                     sortOptions.map((sortItem)=> 

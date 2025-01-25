@@ -99,7 +99,7 @@ function ProductDetailsDialog({open, setOpen, productDetails}) {
 
     return(
         <Dialog open={open} onOpenChange={handleDialogClose}>
-            <DialogContent className="grid grid-cols-2 gap-8 sm:p-12 max-w[90vw] sm:max-w-[80vw] lg:max-w-[70vw]">
+            <DialogContent className="grid grid-cols-1 gap-8 sm:p-12 max-w-[90vw] max-h-[90%] overflow-auto sm:max-w-[80vw] lg:max-w-[70vw]">
                 <div className="relative overflow-hidden rounded-lg">
                     <img 
                     src={productDetails?.image}
@@ -136,7 +136,7 @@ function ProductDetailsDialog({open, setOpen, productDetails}) {
                         }
                     </div>
                     <Separator />
-                    <div className="max-h-[300] overflow-auto">
+                    <div className="max-h-[300px] overflow-auto">
                         <h2 className="text-xl font-bold mb-4">Reviews</h2>
                         <div className="grid gap-6">
                             {
@@ -158,18 +158,19 @@ function ProductDetailsDialog({open, setOpen, productDetails}) {
                             ) : <h1>No reviews</h1>
                             }
                         </div>
-                        <div className="mt-10 mb-10 flex-col gap-2">
+                    </div>
+                    <div className="mt-10 mb-10 flex-col gap-2">
                             <Label>Write a review</Label>
-                            <div className="flex gap-1">
+                            <div className="flex gap-1 mb-5">
                                 <StarRatingComponent rating={rating} handleRatingChange={handleRatingChange} />
                             </div>
                             <Input name="reviewMsg" 
                             value={reviewMsg} 
+                            className="mb-5"
                             onChange={(event)=> setReviewMsg(event.target.value)}
                             placeholder="Write a review..." />
                             <Button onClick={handleAddReview} disabled={reviewMsg.trim() === ""}>Submit</Button>
                         </div>
-                    </div>
                 </div>
             </DialogContent>
         </Dialog>

@@ -99,7 +99,7 @@ function ShoppingHome() {
 
     return(
         <div className="flex flex-col min-h-screen">
-            <div className="relative w-full h-[300px] overflow-hidden lg:h-[600px]">
+            <div className="relative w-full h-[200px] overflow-hidden lg:h-[600px]">
                 {
                     featureImageList && featureImageList.length > 0 
                     ? featureImageList.map((slide, index)=> 
@@ -145,7 +145,7 @@ function ShoppingHome() {
             <section className="py-12 bg-gray-50">
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold text-center mb-8">Shop by brand</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-4">
                         {
                             brandsWithIcon.map((brandItem)=> 
                             <Card onClick={()=> handleNavigateToListingPage(brandItem, "brand")} className="cursor-pointer hover:shadow-lg transition-shadow">
@@ -161,7 +161,7 @@ function ShoppingHome() {
             </section>
             <section className="py-12">
             <h2 className="text-3xl font-bold text-center mb-8">Feature Products</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 px-2 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {
                     productList && productList.length > 0 ? 
                     productList.slice(0,4).map((productItem)=> 

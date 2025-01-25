@@ -4,7 +4,7 @@ import { SheetContent, SheetHeader, SheetTitle } from "../ui/sheet";
 import UserCartItemsContend from "./cart-items-content";
 
 
-function UserCartWrapper({cartItems, setOpenCartSheet}) {
+function UserCartWrapper({cartItems, setOpenCartSheet, setOpenContentSheet}) {
 
     const navigate = useNavigate();
 
@@ -37,13 +37,15 @@ function UserCartWrapper({cartItems, setOpenCartSheet}) {
                     cartItems && cartItems.length === 0
                     ? <Button onClick={()=> 
                         {navigate("/shop/listing");
-                        setOpenCartSheet(false);}
+                        setOpenCartSheet(false);
+                        setOpenContentSheet(false)}
                         } 
                         className="w-full mt-6">Add products
                     </Button>
                     : <Button onClick={()=> 
                         {navigate("/shop/checkout");
-                        setOpenCartSheet(false);}
+                        setOpenCartSheet(false);
+                        setOpenContentSheet(false)}
                         } 
                         className="w-full mt-6">Checkout
                     </Button>

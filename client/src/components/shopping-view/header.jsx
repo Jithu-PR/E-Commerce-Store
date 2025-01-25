@@ -13,13 +13,13 @@ import { useEffect, useState } from "react";
 import { fetchCartItems } from "@/store/shop/cart-slice";
 import { Label } from "../ui/label";
 
-function MenuItems(openCartSheet, setOpenCartSheet) {
+function MenuItems({openContentSheet, setOpenContentSheet}) {
 
     const navigate = useNavigate();
     const location = useLocation();
     const [searchParams, setSearchParams] = useSearchParams();
 
-    function handleNavigate(getCurrentMenuItem) {   
+    function handleNavigate(getCurrentMenuItem) {
         sessionStorage.removeItem('filters');
         const currentFilter = getCurrentMenuItem.id !== "home" 
         && getCurrentMenuItem.id !== "products" 
@@ -35,7 +35,7 @@ function MenuItems(openCartSheet, setOpenCartSheet) {
     return(
         <nav className="flex flex-col mb-3 lg:mb-0 lg:items-center gap-6 lg:flex-row">
             {shoppingViewMenuItems.map((menuItem) => (
-                <Label onClick={()=> handleNavigate(menuItem)} className="text-sm font-medium cursor-pointer" key={menuItem.id}>{menuItem.label}</Label>
+                <Label onClick={()=> {handleNavigate(menuItem); setOpenContentSheet(false)}} className="text-sm font-medium cursor-pointer" key={menuItem.id}>{menuItem.label}</Label>
                 ))
             }
         </nav>
@@ -43,7 +43,7 @@ function MenuItems(openCartSheet, setOpenCartSheet) {
     
 };
 
-function HeaderRightContent() {
+function HeaderRightContent({openContentSheet, setOpenContentSheet}) {
 
     const {user} = useSelector((state)=>state.auth);
     const {cartItems} = useSelector((state)=> state.shopCart);
@@ -70,7 +70,7 @@ function HeaderRightContent() {
                     <span className="absolute top-[-5px] right-[2px] font-bold text-sm">{cartItems?.items?.length || 0}</span>
                     <span className="sr-only">User cart</span>
                 </Button>
-                <UserCartWrapper setOpenCartSheet={setOpenCartSheet} cartItems={cartItems && cartItems.items && cartItems.items.length > 0 ? cartItems.items : []} />
+                <UserCartWrapper setOpenCartSheet={setOpenCartSheet} setOpenContentSheet={setOpenContentSheet} cartItems={cartItems && cartItems.items && cartItems.items.length > 0 ? cartItems.items : []} />
             </Sheet>
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -81,7 +81,7 @@ function HeaderRightContent() {
                 <DropdownMenuContent side="right" className="w-56">
                     <DropdownMenuLabel>Logged in as {user.userName}</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={()=>navigate("/shop/account")}>
+                    <DropdownMenuItem onClick={()=>{navigate("/shop/account"); setOpenContentSheet(false)}}>
                     <User className="mr-2 h-4 w-4" />
                     Account
                     </DropdownMenuItem >
@@ -101,6 +101,7 @@ function HeaderRightContent() {
 function ShoppingHeader() {
 
     const {isAuthenticated} = useSelector((state)=>state.auth);
+    const [openContentSheet, setOpenContentSheet] = useState(false);
     
 
     return(
@@ -110,16 +111,16 @@ function ShoppingHeader() {
                 <House className="h-6 w-6" />
                 <span className="font-bold">Elegance Store</span>
                 </Link>
-                <Sheet>
+                <Sheet open={openContentSheet} onOpenChange={(isOpen)=>setOpenContentSheet(isOpen)}>
                     <SheetTrigger asChild>
-                        <Button variant="outline" size="icon" className="lg:hidden">
+                        <Button onClick={()=> setOpenContentSheet(true)} variant="outline" size="icon" className="lg:hidden">
                         <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle header menu</span>
                         </Button>
                     </SheetTrigger>
                     <SheetContent side="left" className="w-full max-w-xs">
-                        <MenuItems />
-                        <HeaderRightContent />
+                        <MenuItems openContendSheet={openContentSheet} setOpenContentSheet={setOpenContentSheet} />
+                        <HeaderRightContent openContendSheet={openContentSheet} setOpenContentSheet={setOpenContentSheet} />
                     </SheetContent>
                 </Sheet>
                 <div className="hidden lg:block">

@@ -59,8 +59,9 @@ function AuthRegister() {
             });
             navigate('/auth/login');
           } else {
+            const errorMessage = data?.payload?.message || 'An unexpected error occurred. Please try again later.';
             toast({
-              title: data?.payload?.message,
+              title: errorMessage,
               variant: 'destructive',
             });
           }

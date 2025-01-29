@@ -79,7 +79,7 @@ function ShoppingOrders() {
                   </Dialog>
                 </TableCell>
               </TableRow> 
-            ) : null
+            ) : <span className="my-[20px] py-[20px] text-extrabold">No Orders</span>
             }
           </TableBody>
         </Table>

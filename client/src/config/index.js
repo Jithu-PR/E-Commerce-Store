@@ -19,6 +19,7 @@ export const registerFormControls = [
         placeholder : 'Enter your password',
         componentType : 'input',
         type : 'password',
+        showEye : true
     }
 ]
 
@@ -36,6 +37,7 @@ export const loginFormControls = [
         placeholder : 'Enter your password',
         componentType : 'input',
         type : 'password',
+        showEye : true
     },
 ];
 

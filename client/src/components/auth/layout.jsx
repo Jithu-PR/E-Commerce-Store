@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
-import logo from '../../assets/logo.jpeg'
+import logo from '../../assets/logo.jpeg';
+import eleganceLogo from '../../../public/eleganceLogo.svg';
 
 
 
@@ -13,7 +14,13 @@ function AuthLayout() {
                     className='h-full w-full object-cover object-center'
                 />
             </div>
-            <div className="flex flex-1 items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
+            <div className="flex flex-1 flex-col items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
+                <div className="mb-[20px]">
+                    <img
+                    src={eleganceLogo} 
+                    className="w-32 h-32 lg:hidden" 
+                    />
+                </div>
                 <Outlet />
             </div>
         </div>

@@ -69,7 +69,6 @@ const shopAddressSlice = createSlice({
       .addCase(fetchAllAddress.fulfilled, (state, action) => {
         state.isLoading = false;
         state.addressList = action.payload.data;
-        console.log(action.payload.data);
       })
       .addCase(fetchAllAddress.rejected, (state) => {
         state.isLoading = false;

@@ -48,7 +48,6 @@ function ProductImageUpload({
       `${import.meta.env.VITE_API_URL}/api/admin/products/upload-image`,
       data,
     );
-    console.log('API Response:', response.data);
     if (response.data?.success) {
       setUploadedImageUrl(response.data.result.url);
       setImageLoadingState(false);
@@ -56,7 +55,6 @@ function ProductImageUpload({
   }
 
   useEffect(() => {
-    console.log('File selected, starting upload...');
     if (imageFile !== null) uploadImageToCloudinary();
   }, [imageFile]);
 

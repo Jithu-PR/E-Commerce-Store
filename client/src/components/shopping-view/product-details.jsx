@@ -77,7 +77,6 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
         reviewValue: rating,
       }),
     ).then((data) => {
-      console.log(data);
       if (data?.payload?.success) {
         setRating(0);
         setReviewMsg('');

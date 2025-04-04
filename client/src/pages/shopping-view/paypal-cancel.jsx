@@ -11,7 +11,6 @@ function PaypalCancelPage() {
 
   useEffect(() => {
     const orderId = JSON.parse(sessionStorage.getItem('currentOrderId'));
-    console.log(orderId, 'orderId');
     dispatch(deleteOrder(orderId));
     sessionStorage.removeItem('currentOrderId');
   }, [dispatch]);

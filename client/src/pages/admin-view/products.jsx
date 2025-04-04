@@ -52,7 +52,6 @@ function AdminProducts() {
             formData,
           }),
         ).then((data) => {
-          console.log(data, 'edit');
           if (data?.payload.success) {
             dispatch(fetchAllProducts());
             setFormData(initialFormData);
@@ -66,7 +65,6 @@ function AdminProducts() {
             image: uploadedImageUrl,
           }),
         ).then((data) => {
-          console.log(data);
           if (data?.payload.success) {
             dispatch(fetchAllProducts);
             setOpenCreateProductsDialogue(false);
@@ -80,7 +78,6 @@ function AdminProducts() {
   }
 
   function handleDelete(getCurrentProductId) {
-    console.log(getCurrentProductId);
     dispatch(deleteProduct(getCurrentProductId)).then((data) => {
       if (data?.payload?.success) {
         dispatch(fetchAllProducts());

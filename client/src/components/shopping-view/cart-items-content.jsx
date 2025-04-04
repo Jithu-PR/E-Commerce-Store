@@ -55,8 +55,6 @@ function UserCartItemsContend({ cartItem }) {
   }
 
   function handleCartItemDelete(getCartItem) {
-    console.log(getCartItem, user?.id, 'cartitem');
-
     dispatch(
       deleteCartItem({ userId: user?.id, productId: getCartItem.productId }),
     ).then((data) => {

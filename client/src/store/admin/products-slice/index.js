@@ -68,12 +68,10 @@ const adminProductsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchAllProducts.fulfilled, (state, action) => {
-        console.log('fetch fullfilled');
         state.isLoading = false;
         state.productList = action.payload.data;
       })
       .addCase(fetchAllProducts.rejected, (state, action) => {
-        console.log('fetch rejected', action.error);
         state.error = action.error.message || 'Failed to fetch products';
         state.isLoading = false;
         state.productList = [];

@@ -30,7 +30,6 @@ function createSearchParamsHelper(filterParams) {
       queryParams.push(`${key}=${encodeURIComponent(paramValue)}`);
     }
   }
-  console.log(queryParams, 'queryParams');
 
   return queryParams.join('&');
 }
@@ -81,7 +80,6 @@ function ShoppingListing() {
   }
 
   function handleAddToCart(getCurrentProductId, getTotalStock) {
-    console.log(cartItems, 'cartItems');
     let getCartItems = cartItems.items || [];
 
     if (getCartItems.length) {
@@ -121,11 +119,6 @@ function ShoppingListing() {
   }, [categorySearchParams]);
 
   useEffect(() => {
-    console.log(
-      'createSearchParamsHelper useeffect',
-      Object.keys(filters).length,
-    );
-
     if (filters && Object.keys(filters).length > 0) {
       const creatQueryString = createSearchParamsHelper(filters);
       setSearchParams(new URLSearchParams(creatQueryString));

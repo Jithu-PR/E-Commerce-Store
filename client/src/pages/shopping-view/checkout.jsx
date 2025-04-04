@@ -79,7 +79,6 @@ function ShoppingCheckout() {
     };
 
     dispatch(createNewOrder(orderData)).then((data) => {
-      console.log(data, 'order data');
       if (data?.payload?.success) {
         setIsPaymentStart(true);
       } else {

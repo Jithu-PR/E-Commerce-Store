@@ -36,7 +36,6 @@ function AdminOrdersView() {
     if (orderDetails !== null) setOpenDetailsDialog(true);
   }, [orderDetails]);
 
-  console.log(orderDetails, 'list');
 
   return (
     <Card>

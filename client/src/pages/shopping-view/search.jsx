@@ -25,7 +25,6 @@ function SearchProducts() {
   let debounceTimer;
 
   function handleAddToCart(getCurrentProductId, getTotalStock) {
-    console.log(cartItems, 'cartItems');
     let getCartItems = cartItems.items || [];
 
     if (getCartItems.length) {

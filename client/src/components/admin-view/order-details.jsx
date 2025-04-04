@@ -28,7 +28,6 @@ function AdminOrderDetailsView({ orderDetails }) {
       updateOrderStatus({ id: orderDetails?._id, orderStatus: status }),
     ).then((data) => {
       if (data?.payload?.success) {
-        console.log('if block entered');
         dispatch(getOrderDetailsForAdmin(orderDetails?._id));
         dispatch(getAllOrdersForAdmin());
         setFormData(initialFormData);

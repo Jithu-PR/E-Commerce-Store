@@ -53,8 +53,6 @@ export const deleteCartItem = createAsyncThunk(
     const response = await axios.delete(
       `${import.meta.env.VITE_API_URL}/api/shop/cart/${userId}/${productId}`,
     );
-    console.log(response.data, 'response');
-
     return response.data;
   },
 );

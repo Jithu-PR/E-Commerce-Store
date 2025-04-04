@@ -23,7 +23,6 @@ export const registerUser = createAsyncThunk(
 );
 
 export const loginUser = createAsyncThunk('/auth/login', async (formData) => {
-  console.log('Sending request to login API...');
   const response = await axios.post(
     `${import.meta.env.VITE_API_URL}/api/auth/login`,
     formData,
@@ -31,7 +30,6 @@ export const loginUser = createAsyncThunk('/auth/login', async (formData) => {
       withCredentials: true,
     },
   );
-  console.log('Received response:', response.data);
   return response.data;
 });
 
@@ -62,7 +60,6 @@ export const checkAuth = createAsyncThunk('/auth/checkauth', async (token) => {
 });
 
 export const logoutUser = createAsyncThunk('/auth/logout', async (formData) => {
-  console.log('Sending request to login API...');
   const response = await axios.post(
     `${import.meta.env.VITE_API_URL}/api/auth/logout`,
     {},
@@ -70,7 +67,6 @@ export const logoutUser = createAsyncThunk('/auth/logout', async (formData) => {
       withCredentials: true,
     },
   );
-  console.log('Received response:', response.data);
   return response.data;
 });
 

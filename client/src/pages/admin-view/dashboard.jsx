@@ -26,7 +26,6 @@ function AdminDashBoard() {
   }
 
   function handleImageDelete(getCurrentImageId) {
-    console.log(getCurrentImageId, 'image id');
     dispatch(deleteFeatureImage(getCurrentImageId)).then((data) => {
       if (data?.payload?.success) {
         dispatch(getFeatureImages());

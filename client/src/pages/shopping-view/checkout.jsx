@@ -94,7 +94,7 @@ function ShoppingCheckout() {
 
   return (
     <div className="flex flex-col">
-      <div className="relative h-[200px] w-full overflow-hidden lg:h-[400px]">
+      <div className="relative h-[min(40vw,400px)] w-full overflow-hidden">
         <img src={img} className="h-full w-full object-cover object-center" />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5 p-5">
@@ -115,7 +115,7 @@ function ShoppingCheckout() {
             </div>
           </div>
           <div className="mt-4 w-full">
-            <Button onClick={handleInitiatePaypalPayment} className="w-full">
+            <Button onClick={handleInitiatePaypalPayment} disabled={totalCartAmount === 0} className="w-full">
               {isPaymentStart
                 ? 'Processing Paypal payment...'
                 : 'Checkout with Paypal'}
